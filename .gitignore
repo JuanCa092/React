@@ -1,0 +1,26 @@
+# Dependencias
+# node_modules/
+**/node_modules/
+# Variables de entorno
+.env 
+.env.*
+!.env.example
+# Build /complicacion
+/build/
+**/dist/
+**/build/
+coverage/
+
+#logs
+*.log
+yarm-debug.log*
+yarm-error.log*
+
+#editor
+.vscode/
+.DS_Store
+thumbs.db
+
+#Arhivos temporales
+*.tmp
+*.temp
