@@ -1,4 +1,4 @@
-import { children, createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 //Funcion que llama al backend para validar email/password
 import { iniciarSesion } from "../api/authService";
@@ -40,32 +40,34 @@ export function AuthProvider({ children }) {
         //Guardamos la sesion en el localStorage para que sobreviva a un F5 
         localStorage.setItem('token', token);
         localStorage.setItem('usuario',JSON.stringify (UsuarioRecibido));
-
-        //Funcion de logout borra la sesion del localStorage como el estado 
-        function logout() {
-            localStorage.removeItem('token');
-            localStorage.removeItem('usuario');
-            setUsuario(null);
-        }
-        const value = {
-            usuario,
-            cargando,
-            estadoAutenticado: !!usuario,
-            login,
-            logout
-        }
+        setUsuario(UsuarioRecibido);
     }
 
-    return <AuthContext.Provider value= {value}></AuthContext.Provider>;
+    //Funcion de logout borra la sesion del localStorage como el estado 
+    function logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('usuario');
+        setUsuario(null);
+    }
+
+    const value = {
+        usuario,
+        cargando,
+        estadoAutenticado: !!usuario,
+        login,
+        logout
+    };
+
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 /**
  * Hook personalizado para consumir el contexto mas facil
  */
 export function useAuth() {
     //lee el valor actual del contexto (Usuario, cargando, login, logout)
-    const contexto = useContext
-    (AuthContext);
+    const contexto = useContext(AuthContext);
     if (!contexto) {
         throw new Error('useAuth debe usarse dentro de un <authProvider>');
     }
+    return contexto;
 }

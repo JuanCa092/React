@@ -26,9 +26,7 @@ import './index.css'
 import App from './App.jsx'
 
 //proveedor del contexto de sesion (ver context/AuthContext.jsx)
-import {AuthProvider} from './context/AuthContext.jsx';
-import { BrowserRouter } from 'react-router-dom'
-
+import {AuthProvider} from './context/authContext.jsx';
 //Busca el <div id="root"> de index.html y engancha react ahi dentro
 createRoot(document.getElementById('root')).render(
   <StrictMode>
