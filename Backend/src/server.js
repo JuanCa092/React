@@ -6,7 +6,7 @@ semontan las rutas al final del servidor que esta escuchando las peticiones por 
 const express = require('express');
 //midleware que habilita cors para que el servidor y pueda recibir peticiones
 const cors = require('cors');
-require('dotenv').config();
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 // importamos el router con los endpoints de autenticacion
 const authRoutes = require('../routes/auth.routes');
 // creamos la app de express

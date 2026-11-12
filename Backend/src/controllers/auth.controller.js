@@ -65,7 +65,7 @@ async function login(req, res) {
                 email: usuario.email, 
                 rol: usuario.rol 
             },
-            process.env.JWT_SECRET,
+            process.env.JWT_SECRET || process.env.jwtSecret,
             { expiresIn: process.env.JWT_EXPIRES_IN || '1h' }
         );
 

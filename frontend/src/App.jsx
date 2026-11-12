@@ -5,6 +5,10 @@ import LoginPage from "./page/Loginpage.jsx";
 //Guardian que protege las rutas privadas del dashboard
 //import ProtectedRoute from '.routes/ProtectedRoute';
 
+function NotFoundPage() {
+  return <h1 className="text-center mt-5">Pagina no encontada</h1>;
+}
+
 function App() {
   return (
     <Routes>
@@ -14,9 +18,9 @@ function App() {
 
       <Route path="/login" element={<LoginPage />} />
 
-      <Route path="*" element={<Navigate to="/login" replace />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
-  );
+  )
 }
 
 export default App;

@@ -8,7 +8,7 @@ import axios, { mergeConfig } from 'axios';
  * variable de entorno de vite (import.meta.env VITE_API_URL),
  * pero la vamos a dejar fija apuntado al backend
  */
-const API_URL = 'http//localhost:4000/api';
+const API_URL = 'http://localhost:4000/api';
 
 //axios.create genera una instancia propia distinta del axios global
 //con configuracion ya lista para usar en toda la aplicacion
