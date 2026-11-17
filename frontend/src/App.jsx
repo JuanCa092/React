@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "./page/Loginpage.jsx";
 // Asegúrate de crear e importar correctamente estos componentes:
-import ProtectedRoute from "./routes/ProtectedRoute";
+import ProtectedRoute from "../src/routees/ProtectedRoutes.jsx";
 //import DashboardLayout from "./page/DashboardLayout.jsx"; // Corregido el posible typo Layour -> Layout
 //import DashboardHome from "./page/DashboardHome.jsx";
 //import UsuariosPage from "./page/UsuariosPage.jsx";
