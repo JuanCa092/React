@@ -1,26 +1,31 @@
 /**
- * esqueleto visual que compartan todas las paginas del panel
- * (Inicio, Usuarios, categorias, subcategorias, productos):
- * sidebar a la izquierda +Topbar arriba + el contenido de la 
- * pagina actual en el medio
- */
+ * esqueleto  visual que comparten todas las paginas del ppanel 
+ * (inicio, usuarios, categorias, subcategorias, productos):
+ * sidebar a la izquieda + topbar arriba + el contenido de la pagina
+ * 
+ * 
+ * /*/
 
-//Oulet que marca el punto de donde se pinta la ruta hija activa
-import {Outle} from 'react-router-dom';
-//menu lateral
-import Sideebar from '../../components/common/Sidebar.jsx';
-//barra superior con usuario y boton de salir
+import { Outlet } from "react-router-dom";
+//menu lateral de navegacion
+import Sidebar from '../../components/common/Sidebar.jsx';
+//barra superior con usuario y boton de salir 
 import Topbar from '../../components/common/Topbar.jsx';
 
-function DashboardLayout() {
+//no recibe props: se usa como elemnt 
+function DashBoardLayout() {
     return (
-    <div Classname="d-flex">
-        <Sideebar/>
-        {/**flex-grow-1 hace que esta columna ocupe todo el espacio restante */}
-        <div className="flex-grow-1 d-flex 
-        flex-column" style={{ minHeight: '100hv', backgroundColor: '#f4f6f9'}}>
-
+        <div className="d-flex">
+            <Sidebar/>
+            flex-grow-1 hace que esta columna agrupe todo el espacio restante despues del ancho fijo en sidebar
+            <div className="flex-grow-1 d-flex flex-column" style={{minHeight: '100vh', backgroundColor: '#f4f6f9'}}>
+                <Topbar />
+                <main className="">
+                    <Outlet />
+                </main>
+            </div>
         </div>
-    </div>
-    )
+    );
 }
+
+export default DashBoardLayout;

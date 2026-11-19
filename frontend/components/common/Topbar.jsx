@@ -1,40 +1,45 @@
-import { NavLink } from "react-router-dom";
-
-const opcionesMenu = [
-  { texto: "inicio", ruta: "/dashboard/inicio", icono: "bi-house", fin: true },
-  { texto: "usuarios", ruta: "/dashboard/usuarios", icono: "bi-people", fin: false },
-  { texto: "categorias", ruta: "/dashboard/subcategorias", icono: "bi-tags", fin: false },
-];
-
-function Sidebar() {
-  return (
-    <aside
-      className="bg-dark text-white d-flex flex-column p-3"
-      style={{ width: 240, minHeight: "100vh" }}
-    >
-      <div className="d-flex align-items-center gap-2 mb-4 px-2">
-        <i className="bi bi-boxes fs-5"></i>
-        <span className="fs-5 fw-semibold">Inventario React</span>
-      </div>
-
-      <nav className="nav nav-pills flex-column gap-1">
-        {opcionesMenu.map((opcion) => (
-          <NavLink
-            key={opcion.ruta}
-            to={opcion.ruta}
-            end={opcion.fin}
-            className={({ isActive }) =>
-              "nav-link d-flex align-items-center gap-2 text-white" +
-              (isActive ? " active bg-primary" : "")
-            }
-          >
-            <i className={`bi ${opcion.icono}`}></i>
-            {opcion.texto}
-          </NavLink>
-        ))}
-      </nav>
-    </aside>
-  );
+/**
+- barra superior del dashboard muestra el nombre del usuario
+- loguendo (viene del authcontext) y un boton para
+- cerrar sesion 
+ */
+//hook para navegar progamaticamente (sin que el usuario haga clik en un link)
+import { useNavigate } from 'react-router-dom';
+//hook paras leer el usuario logueado y la funcion logout
+import { useAuth } from '../../src/context/authContext';
+//no recibe props toma todo lo que necesita el authcontext
+function topbar(){
+    //usuario datos que quien inicion sesion; logout borra la sesion
+    const {usuario, logout } = useAuth();
+    //funcion para cambiar de url desde javascript
+    const navigate = useNavigate();
+//el cerrar sesion limpiamos el contexto/localstorage y
+//mandamos al usuario de vuelta a la pantalla login
+function manejarLogout() {
+    logout();
+    navigate('/login', { replace: true });
 }
 
-export default Sidebar;
+return (
+    <nav className='navbar navbar-lighr bg-white border-bottom px-4 py-3'>
+    <span className='navbar-brand mb-0 h1 fs-6 text-muted'>panel de administracion</span>
+    
+    <div className='d-flex align-items-center gap-3'>
+    <div className='text-end d-none d-sm-block'>
+        <div className='fw-semibold'>{usuario?.nombre}</div>
+    <small className='text-muted text-capitalize'>{usuario?.rol}
+
+    </small>
+        </div>
+        <button className='btn btn-outline-danger btn-sm d-flex
+        align-items-center gap-1' onClick={manejarLogout}>
+        <i className='bi bi-box-arrow-right'></i>
+        salir
+        </button>
+    </div>
+    
+    </nav>
+    );
+}
+
+export default topbar;
