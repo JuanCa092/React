@@ -17,10 +17,10 @@ function DashBoardLayout() {
     return (
         <div className="d-flex">
             <Sidebar/>
-            flex-grow-1 hace que esta columna agrupe todo el espacio restante despues del ancho fijo en sidebar
-            <div className="flex-grow-1 d-flex flex-column" style={{minHeight: '100vh', backgroundColor: '#f4f6f9'}}>
+            {/* flex-grow-1 hace que esta columna agrupe todo el espacio restante despues del ancho fijo en sidebar */}
+            <div className="flex-grow-1 d-flex flex-column" style={{ minWidth: 0, minHeight: '100vh', backgroundColor: '#f4f6f9' }}>
                 <Topbar />
-                <main className="">
+                <main className="p-4">
                     <Outlet />
                 </main>
             </div>

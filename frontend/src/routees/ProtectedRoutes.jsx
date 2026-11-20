@@ -4,7 +4,7 @@ import { useAuth } from '../context/authContext.jsx'; // Hook personalizado para
 
 function ProtectedRoute() {
   // Desestructuración correcta del hook
-  const { estaAutenticado, cargando } = useAuth();
+  const { estadoAutenticado, cargando } = useAuth();
 
   // Mostrar spinner mientras carga el estado de autenticación
   if (cargando) {
@@ -16,7 +16,7 @@ function ProtectedRoute() {
   }
 
   // Si no está autenticado, redirigir al login
-  if (!estaAutenticado) {
+  if (!estadoAutenticado) {
     return <Navigate to="/login" replace />;
   }
 

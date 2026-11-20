@@ -14,7 +14,7 @@ const API_URL = 'http://localhost:4000/api';
 //con configuracion ya lista para usar en toda la aplicacion
 const axiosClient = axios.create({
     baseURL: API_URL, //se antepone automaticamente a cada ruta relativa ej: /auth/login
-    Headers: {
+    headers: {
         'Content-type': 'application/json', // le avisamos al backend que mandamos el json
     },
 });
@@ -30,8 +30,8 @@ axiosClient.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
     if (token) {
         // Lo agregamos al header en el formato que espera el backend:
-        //Authorization: Beader <token>
-        config.headers.Authorization = `Bearer $ {token}`;
+        // Authorization: Bearer <token>
+        config.headers.Authorization = `Bearer ${token}`;
     }
     // Siempre hay que devolver "config" si o no la peticion nunca se envia
     return config;
