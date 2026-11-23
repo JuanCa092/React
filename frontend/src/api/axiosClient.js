@@ -1,7 +1,7 @@
 
 
 //libreria para hacer HTTP (GET POST)
-import axios, { mergeConfig } from 'axios';
+import axios from 'axios';
 
 /**
  * url base del backend en un proyecto real esto vendria de una

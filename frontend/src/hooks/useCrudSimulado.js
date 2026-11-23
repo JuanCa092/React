@@ -1,10 +1,10 @@
-import { act, useEffect } from "react"
+import { useEffect, useState } from "react"
 
-function useCurdSimulado(claveStorage, datosIniciales) {
+function useCrudSimulado(claveStorage, datosIniciales) {
     //estado con la lista de registros el valor inicial calcula
     //una sola vez, si hay datos guardados en localstorage los usa
     //sino arranca con datos iniciales
-    const [lista , setlista ] =useStauge (() => {
+    const [lista, setlista] = useState(() => {
         const guardado = localStorage.getItem(claveStorage)
 
         return guardado ? JSON.parse(guardado): datosIniciales
@@ -41,4 +41,4 @@ function useCurdSimulado(claveStorage, datosIniciales) {
     return {lista, agregar, actualizar, alternarEstado};
 
 }
-export default useCurdSimulado;
+export default useCrudSimulado;

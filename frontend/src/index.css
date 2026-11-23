@@ -106,3 +106,24 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* Quita el margen por defecto que el navegador le pone al <body> */
+body {
+  margin: 0;
+  background-color: #f4f6f9; /* gris muy claro, fondo tipico de un panel admin */
+}
+
+/* Hace que el cursor cambie a "mano" en cualquier elemento clickeable
+   al que le pongamos la clase .cursor-pointer */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Contenedor de la pantalla de login: lo centra vertical y horizontalmente */
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0d6efd 0%, #0a3d91 100%);
+}

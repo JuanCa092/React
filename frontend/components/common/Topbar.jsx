@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 //hook paras leer el usuario logueado y la funcion logout
 import { useAuth } from '../../src/context/authContext';
 //no recibe props toma todo lo que necesita el authcontext
-function topbar(){
+function Topbar(){
     //usuario datos que quien inicion sesion; logout borra la sesion
     const {usuario, logout } = useAuth();
     //funcion para cambiar de url desde javascript
@@ -42,4 +42,4 @@ return (
     );
 }
 
-export default topbar;
+export default Topbar;
